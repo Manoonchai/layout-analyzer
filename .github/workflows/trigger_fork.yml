@@ -13,4 +13,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: narze/layout-analyzer
           event-type: trigger_fork
