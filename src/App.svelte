@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { Layout } from "../carpalx-th/src/layout"
-  import type { ILayout } from "../carpalx-th/src/layout"
   import thai5k from "../carpalx-th/data/thai5k-freq.json"
+  import thaisum from "../carpalx-th/data/thaisum-full.json"
+  import thaisumTestset from "../carpalx-th/data/thaisum-testset.json"
   import { wisesight } from "../carpalx-th/data/wisesight"
   import { wongnai } from "../carpalx-th/data/wongnai"
-  import thaisumTestset from "../carpalx-th/data/thaisum-testset.json"
-  import thaisum from "../carpalx-th/data/thaisum-full.json"
   import Carpalx from "../carpalx-th/src/carpalx"
+  import type { Triads } from "../carpalx-th/src/carpalx"
+  import { Layout } from "../carpalx-th/src/layout"
+  import type { ILayout } from "../carpalx-th/src/layout"
+  import { extractTriads } from "../carpalx-th/src/utils"
 
   const datasets = {
     thai5k,
@@ -33,6 +35,8 @@
     .map((row) => JSON.stringify(row).replaceAll('","', '", "'))
     .join("\n")
 
+  let customText
+
   $: layoutData = layoutInput
     .trim()
     .split("\n")
@@ -56,23 +60,52 @@
     carpalxModel = new Carpalx({ layout })
     const baseModel = new Carpalx({ layout: baseLayout })
 
-    const efforts: Array<[string, number]> = Object.entries(datasets).map(
-      ([name, dataset]) => {
+    // Use custom text if exist, or use predefined datasets
+    if (customText && customText.length >= 3) {
+      const customTriads: Triads = {}
+
+      extractTriads(customTriads, customText)
+
+      const customDatasets = {
+        custom: customTriads,
+      }
+
+      const efforts: Array<[string, number]> = Object.entries(
+        customDatasets
+      ).map(([name, dataset]) => {
         return [name, carpalxModel.typingEffort(dataset)]
-      }
-    )
+      })
 
-    const baseEfforts: Array<[string, number]> = Object.entries(datasets).map(
-      ([name, dataset]) => {
+      const baseEfforts: Array<[string, number]> = Object.entries(
+        customDatasets
+      ).map(([name, dataset]) => {
         return [name, baseModel.typingEffort(dataset)]
-      }
-    )
+      })
 
-    effort =
-      (100 * baseEfforts.reduce((prev, [_name, eff]) => prev + eff, 0)) /
-        efforts.reduce((prev, [_name, eff]) => prev + eff, 0) -
-      100 +
-      "%"
+      effort =
+        (100 * baseEfforts.reduce((prev, [_name, eff]) => prev + eff, 0)) /
+          efforts.reduce((prev, [_name, eff]) => prev + eff, 0) -
+        100 +
+        "%"
+    } else {
+      const efforts: Array<[string, number]> = Object.entries(datasets).map(
+        ([name, dataset]) => {
+          return [name, carpalxModel.typingEffort(dataset)]
+        }
+      )
+
+      const baseEfforts: Array<[string, number]> = Object.entries(datasets).map(
+        ([name, dataset]) => {
+          return [name, baseModel.typingEffort(dataset)]
+        }
+      )
+
+      effort =
+        (100 * baseEfforts.reduce((prev, [_name, eff]) => prev + eff, 0)) /
+          efforts.reduce((prev, [_name, eff]) => prev + eff, 0) -
+        100 +
+        "%"
+    }
   }
 
   $: layoutDataDisplay = Array(layoutData.length / 2)
@@ -244,6 +277,17 @@
         </option>
       {/each}
     </select>
+
+    <div>
+      <center>Custom Text</center>
+      <textarea
+        id="custom-text"
+        bind:value={customText}
+        cols="55"
+        rows="10"
+        placeholder="Paste text to analyze (instead of default dataset)"
+      />
+    </div>
 
     <div>Effort vs Kedmanee : {effort}</div>
   </div>
