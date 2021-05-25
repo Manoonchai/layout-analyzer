@@ -112,7 +112,7 @@
 
 <main>
   <div class="container">
-    <h1>Carpalx TH : Layout Renderer</h1>
+    <h1>Layout Analyzer</h1>
 
     <a
       class="github-button"
