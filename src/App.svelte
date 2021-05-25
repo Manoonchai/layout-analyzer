@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Layout } from "../../src/layout"
-  import type { ILayout } from "../../src/layout"
-  import thai5k from "../../data/thai5k-freq.json"
-  import { wisesight } from "../../data/wisesight"
-  import { wongnai } from "../../data/wongnai"
-  import thaisumTestset from "../../data/thaisum-testset.json"
-  import thaisum from "../../data/thaisum-full.json"
-  import Carpalx from "../../src/carpalx"
+  import { Layout } from "../carpalx-th/src/layout"
+  import type { ILayout } from "../carpalx-th/src/layout"
+  import thai5k from "../carpalx-th/data/thai5k-freq.json"
+  import { wisesight } from "../carpalx-th/data/wisesight"
+  import { wongnai } from "../carpalx-th/data/wongnai"
+  import thaisumTestset from "../carpalx-th/data/thaisum-testset.json"
+  import thaisum from "../carpalx-th/data/thaisum-full.json"
+  import Carpalx from "../carpalx-th/src/carpalx"
 
   const datasets = {
     thai5k,
@@ -116,10 +116,10 @@
 
     <a
       class="github-button"
-      href="https://github.com/narze/carpalx-th"
+      href="https://github.com/Manoonchai/layout-analyzer"
       data-size="large"
       data-show-count="true"
-      aria-label="Star narze/carpalx-th on GitHub">Star</a
+      aria-label="Star Manoonchai/layout-analyzer on GitHub">Star</a
     >
 
     <div class="keyboard-container">

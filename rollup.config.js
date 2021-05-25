@@ -62,8 +62,8 @@ export default {
 		}),
 		commonjs(),
 		typescript({
-			include: ["../src/**/*"],
-			exclude: ["../src/**/*.spec.ts"],
+			include: ["carpalx-th/src/**/*"], 
+			exclude: ["carpalx-th/src/**/*.spec.ts"],
 			sourceMap: !production,
 			inlineSources: !production
 		}),

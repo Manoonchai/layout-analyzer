@@ -4,6 +4,6 @@
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable", "es2019", "esnext"],
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "../src/**/*"],
+  "include": ["src/**/*", "carpalx-th/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }
