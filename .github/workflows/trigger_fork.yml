@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  trigger_work:
+  trigger_fork:
     runs-on: ubuntu-latest
     steps:      
       - name: Repository Dispatch
