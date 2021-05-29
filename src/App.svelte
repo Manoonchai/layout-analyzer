@@ -23,7 +23,7 @@
   }
 
   let keysToSwap = []
-  let effort, carpalxModel
+  let effort, carpalxModel, effortBySet
 
   const predefinedLayouts = [
     { id: "manoonchai_v03", text: "Manoonchai v0.3" },
@@ -86,6 +86,10 @@
         return [name, baseModel.typingEffort(dataset)]
       })
 
+      effortBySet = baseEfforts.map(([name, eff], i) => {
+        return `${name} : ${(100 * eff) / efforts[i][1] - 100}`
+      })
+
       effort =
         (100 * baseEfforts.reduce((prev, [_name, eff]) => prev + eff, 0)) /
           efforts.reduce((prev, [_name, eff]) => prev + eff, 0) -
@@ -103,6 +107,10 @@
           return [name, baseModel.typingEffort(dataset)]
         }
       )
+
+      effortBySet = baseEfforts.map(([name, eff], i) => {
+        return `${name} : ${(100 * eff) / efforts[i][1] - 100}`
+      })
 
       effort =
         (100 * baseEfforts.reduce((prev, [_name, eff]) => prev + eff, 0)) /
@@ -294,6 +302,11 @@
     </div>
 
     <div>Effort vs Kedmanee : {effort}</div>
+    <br />
+    <div>Effort vs Kedmanee by set :</div>
+    {#each effortBySet as set}
+      <div>{set}%</div>
+    {/each}
   </div>
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
