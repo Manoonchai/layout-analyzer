@@ -4,6 +4,8 @@
   import thaisumTestset from "../carpalx-th/data/thaisum-testset.json"
   import { wisesight } from "../carpalx-th/data/wisesight"
   import { wongnai } from "../carpalx-th/data/wongnai"
+  import { thaiTweets } from "../carpalx-th/data/thai-tweets"
+  import { sugreeTweets } from "../carpalx-th/data/sugree-tweets"
   import Carpalx from "../carpalx-th/src/carpalx"
   import type { Triads } from "../carpalx-th/src/carpalx"
   import { Layout } from "../carpalx-th/src/layout"
@@ -16,6 +18,8 @@
     wongnai,
     thaisumTestset,
     thaisum,
+    thaiTweets,
+    sugreeTweets,
   }
 
   let keysToSwap = []
