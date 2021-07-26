@@ -12,6 +12,19 @@
   import type { ILayout } from "../carpalx-th/src/layout"
   import { extractTriads } from "../carpalx-th/src/utils"
 
+  let groups = [
+    { alphabets: 'ุู', style: "color: gold; font-size: 150%;" },
+    { alphabets: "๊๋์", style: "color: hotpink; font-size: 150%;" },
+    { alphabets: "ไทย", style: "color: red; font-size: 150%;" },
+    { alphabets: "พผฟ", style: "color: lightgreen; font-size: 150%;" },
+    { alphabets: "่้", style: "color: orange; font-size: 150%;" },
+    { alphabets: "าำ", style: "color: yellow; font-size: 150%;" },
+    { alphabets: "ญณ", style: "color: cyan; font-size: 150%;" },
+    { alphabets: "ชซ", style: "color: salmon; font-size: 150%;" },
+    { alphabets: "ฒฏฐฎฆฑฬฯฌฮฅฃ", style: "color: teal; font-size: 150%;" },
+    { alphabets: "ลส", style: "color: moccasin; font-size: 150%;" },
+  ]
+
   const datasets = {
     thai5k,
     wisesight,
@@ -176,10 +189,10 @@
         </div>
         {#each layoutDataDisplay[0] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[1]))?.["style"]} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[0]))?.["style"]} >
               {keypair[0]}
             </div>
           </div>
@@ -193,10 +206,10 @@
         </div>
         {#each layoutDataDisplay[1] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[1]))?.["style"]} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[0]))?.["style"]} >
               {keypair[0]}
             </div>
           </div>
@@ -207,10 +220,10 @@
         </div>
         {#each layoutDataDisplay[2] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[1]))?.["style"]} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[0]))?.["style"]} >
               {keypair[0]}
             </div>
           </div>
@@ -225,10 +238,10 @@
         </div>
         {#each layoutDataDisplay[3] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[1]))?.["style"]} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={groups.find(({alphabets}) => alphabets.includes(keypair[0]))?.["style"]} >
               {keypair[0]}
             </div>
           </div>
