@@ -12,6 +12,23 @@
   import type { ILayout } from "../carpalx-th/src/layout"
   import { extractTriads } from "../carpalx-th/src/utils"
 
+  let focusedWord = "ที่ การ"
+//   ที่
+// การ
+// เป็น
+// ใน
+// ของ
+// มี
+// จะ
+// และ
+// ไม่
+// ได้
+// ให้
+// ว่า
+// ไป
+// มา
+// ก็
+
   const datasets = {
     thai5k,
     wisesight,
@@ -176,10 +193,10 @@
         </div>
         {#each layoutDataDisplay[0] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={[keypair[1]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={[keypair[0]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[0]}
             </div>
           </div>
@@ -193,10 +210,10 @@
         </div>
         {#each layoutDataDisplay[1] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={[keypair[1]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={[keypair[0]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[0]}
             </div>
           </div>
@@ -207,10 +224,10 @@
         </div>
         {#each layoutDataDisplay[2] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={[keypair[1]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={[keypair[0]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[0]}
             </div>
           </div>
@@ -225,10 +242,10 @@
         </div>
         {#each layoutDataDisplay[3] as keypair}
           <div class="key">
-            <div class="key__top swappable" on:mousedown={swapKeyPair}>
+            <div class="key__top swappable" on:mousedown={swapKeyPair} style={[keypair[1]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[1]}
             </div>
-            <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
+            <div class="key__bottom swappable" on:mousedown={swapKeyPair} style={[keypair[0]].filter(v => focusedWord.split("").includes(v)).length ? "color: lime; font-weight: bold; font-size: 1.5rem;" : ""} >
               {keypair[0]}
             </div>
           </div>
