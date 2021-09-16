@@ -56,7 +56,7 @@
       return data
     })
 
-  $: if (layoutData.length == 12) {
+  $: if (layoutData.length == 8) {
     const baseLayout = new Layout({ name: "kedmanee" })
     const layout = new Layout({ name: "custom" })
     layout.matrix = layoutData as ILayout<string>
@@ -120,16 +120,14 @@
     }
   }
 
-  $: layoutDataDisplay = Array(layoutData.length / 3)
+  $: layoutDataDisplay = Array(layoutData.length / 2)
     .fill(null)
     .map((_, i) => {
       return layoutData[i].map((x, j) => [
         x,
-        layoutData[i + layoutData.length / 3][j],
-        layoutData[i + layoutData.length / 3 * 2][j],
+        layoutData[i + layoutData.length / 2][j],
       ])
     })
-
 
   function swapKeyPair(e) {
     keysToSwap = [...keysToSwap, e.target.textContent]
@@ -172,28 +170,25 @@
     <div class="keyboard-container">
       <div class="keyboard">
         <!-- First row -->
-        <div class="key non-alphabets">
-          <div class="key__top swappable">~</div>
-          <div class="key__bottom swappable">`</div>
+        <div class="key">
+          <div class="key__top">~</div>
+          <div class="key__bottom">`</div>
         </div>
         {#each layoutDataDisplay[0] as keypair}
           <div class="key">
             <div class="key__top swappable" on:mousedown={swapKeyPair}>
               {keypair[1]}
             </div>
-            <div class="key__right swappable" on:mousedown={swapKeyPair}>
-              {keypair[2]}
-            </div>
             <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
               {keypair[0]}
             </div>
           </div>
         {/each}
-        <div class="key non-alphabets is-backspace">
+        <div class="key is-backspace">
           <div class="key__bottom">&larr;</div>
         </div>
         <!-- Second row -->
-        <div class="key non-alphabets is-tab">
+        <div class="key is-tab">
           <div class="key__bottom">&rarrb;</div>
         </div>
         {#each layoutDataDisplay[1] as keypair}
@@ -201,16 +196,13 @@
             <div class="key__top swappable" on:mousedown={swapKeyPair}>
               {keypair[1]}
             </div>
-            <div class="key__right swappable" on:mousedown={swapKeyPair}>
-              {keypair[2]}
-            </div>
             <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
               {keypair[0]}
             </div>
           </div>
         {/each}
         <!-- Third row -->
-        <div class="key non-alphabets is-capslock is-left">
+        <div class="key is-capslock is-left">
           <div class="key__bottom">ก/A</div>
         </div>
         {#each layoutDataDisplay[2] as keypair}
@@ -218,20 +210,17 @@
             <div class="key__top swappable" on:mousedown={swapKeyPair}>
               {keypair[1]}
             </div>
-            <div class="key__right swappable" on:mousedown={swapKeyPair}>
-              {keypair[2]}
-            </div>
             <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
               {keypair[0]}
             </div>
           </div>
         {/each}
-        <div class="key non-alphabets is-enter is-right">
+        <div class="key is-enter is-right">
           <div class="key__top" />
           <div class="key__bottom">&larrhk;</div>
         </div>
         <!-- Fourth row -->
-        <div class="key non-alphabets is-shift-left is-left">
+        <div class="key is-shift-left is-left">
           <div class="key__bottom">⬆</div>
         </div>
         {#each layoutDataDisplay[3] as keypair}
@@ -239,43 +228,40 @@
             <div class="key__top swappable" on:mousedown={swapKeyPair}>
               {keypair[1]}
             </div>
-            <div class="key__right swappable" on:mousedown={swapKeyPair}>
-              {keypair[2]}
-            </div>
             <div class="key__bottom swappable" on:mousedown={swapKeyPair}>
               {keypair[0]}
             </div>
           </div>
         {/each}
-        <div class="key non-alphabets is-shift-right is-right">
+        <div class="key is-shift-right is-right">
           <div class="key__bottom">⬆</div>
         </div>
         <!-- Fifth row -->
-        <div class="key non-alphabets is-left">
+        <div class="key is-left">
           <div class="key__bottom">fn</div>
         </div>
-        <div class="key non-alphabets is-right">
+        <div class="key is-right">
           <div class="key__bottom">control</div>
         </div>
-        <div class="key non-alphabets is-right">
-          <div class="key__top"></div>
-          <div class="key__bottom"></div>
+        <div class="key is-right">
+          <div class="key__top">alt</div>
+          <div class="key__bottom">option</div>
         </div>
-        <div class="key non-alphabets is-command is-right">
-          <div class="key__bottom">alt</div>
+        <div class="key is-command is-right">
+          <div class="key__bottom">command</div>
         </div>
-        <div class="key non-alphabets is-space" />
-        <div class="key non-alphabets is-command is-left">
-          <div class="key__bottom">alt</div>
+        <div class="key is-space" />
+        <div class="key is-command is-left">
+          <div class="key__bottom">command</div>
         </div>
-        <div class="key non-alphabets is-left">
-          <div class="key__top"></div>
-          <div class="key__bottom"></div>
+        <div class="key is-left">
+          <div class="key__top">alt</div>
+          <div class="key__bottom">option</div>
         </div>
-        <div class="key non-alphabets is-arrow-left">&ltrif;</div>
-        <div class="key non-alphabets is-arrow-up">&utrif;</div>
-        <div class="key non-alphabets is-arrow-down">&dtrif;</div>
-        <div class="key non-alphabets is-arrow-right">&rtrif;</div>
+        <div class="key is-arrow-left">&ltrif;</div>
+        <div class="key is-arrow-up">&utrif;</div>
+        <div class="key is-arrow-down">&dtrif;</div>
+        <div class="key is-arrow-right">&rtrif;</div>
       </div>
     </div>
     {#if keysToSwap.length === 1}

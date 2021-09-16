@@ -18,8 +18,8 @@ $keyboard-spacing: 16px;
   margin-top: 20px;
 }
 .keyboard {
-  background-color: $color-keyboard;
-  color: $color-text;
+  background-color: white;
+  color: black;
   display: grid;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -33,19 +33,26 @@ $keyboard-spacing: 16px;
   transform-origin: top left;
 }
 .key {
-  align-items: center;
-  background-color: $color-key;
+  align-items: start;
+  background-color: white;
   border-radius: $key-radius;
+  border: solid 1.5px black;
   // cursor: pointer;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   flex-direction: column;
   grid-column-end: span 4;
   grid-row-end: span 2;
   grid-template-columns: repeat(2, $key-size / 2);
   grid-template-rows: repeat(2, $key-size / 2);
   justify-content: center;
-  padding: $key-spacing-vertical $key-spacing-horizontal;
+  padding: 4px;
   margin: $key-gutter / 2;
+  font-weight: 500;
+  &.non-alphabets {
+    display: flex;
+    color: #888;
+  }
   &.is-arrow-left,
   &.is-arrow-right,
   &.is-arrow-down,
@@ -145,13 +152,25 @@ $keyboard-spacing: 16px;
   }
 }
 .key__bottom,
+.key__right,
 .key__top {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin: 0 auto;
 }
 .key__bottom {
   flex-grow: 1;
+  font-weight: 600;
+}
+.key__right {
+  color: #bbb;
+  font-weight: 300;
+  font-size: 0.9em !important;
+}
+.key__top {
+  color: #444;
+  font-weight: 300;
 }
 
 .container {
